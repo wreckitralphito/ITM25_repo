@@ -107,7 +107,7 @@ def interest(principal, rate, periods):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
     import math
-    final_amount = math.floor(principal * ((1 + rate) * periods))
+    final_amount = math.floor((principal * ((1 + rate) * periods)) + principal)
     return final_amount
 
 def body_mass_index(weight, height):
