@@ -49,7 +49,6 @@ def shift_letter(letter, shift):
     return alphabet.split()[finalIndex]
     pass
 
-print(shift
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
     10 points.
