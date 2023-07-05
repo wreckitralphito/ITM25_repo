@@ -239,37 +239,37 @@ def scytale_cipher(message, shift):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-        message = message.upper()
-        extended_message = ""
-        encoded_message = ''
+    message = message.upper()
+    extended_message = ""
+    encoded_message = ''
 
-        if len(message) % shift != 0:
-                extended_message = message + ('_' * (shift - (len(message) % shift)))
-                # print(extended_message) 
-        else:  
-                extended_message = message
-                # print(extended_message)
+    if len(message) % shift != 0:
+            extended_message = message + ('_' * (shift - (len(message) % shift)))
+            # print(extended_message) 
+    else:  
+            extended_message = message
+            # print(extended_message)
 
-        # num_columns = len(extended_message) // shift
-        # num_columns = 7
-        # num_rows = shift
+    # num_columns = len(extended_message) // shift
+    # num_columns = 7
+    # num_rows = shift
 
-        # print(num_columns)
-        # print(num_rows)
+    # print(num_columns)
+    # print(num_rows)
 
-        # extended_message = extended_message.index[i]
+    # extended_message = extended_message.index[i]
 
 # For each index i in the encoded message, use the character at the index
 # (i // shift) + (len(message) // shift) * (i % shift)
 # new_start = new_start + new_message[(x // shift) + (len(new_message)//shift)*(x % shift)]
 
-        # for i in extended_message:
-                # encoded_message = extended_message + (i // shift) + (len(extended_message) // shift) * (i % shift)
+    # for i in extended_message:
+            # encoded_message = extended_message + (i // shift) + (len(extended_message) // shift) * (i % shift)
 
-        for i in range(len(extended_message)):
-                index = (i // shift) + (len(extended_message) // shift) * (i % shift)
-                encoded_message += extended_message[index]
-        return encoded_message
+    for i in range(len(extended_message)):
+            index = (i // shift) + (len(extended_message) // shift) * (i % shift)
+            encoded_message += extended_message[index]
+    return encoded_message
 
 def scytale_decipher(message, shift):
     '''Scytale De-cipher.
