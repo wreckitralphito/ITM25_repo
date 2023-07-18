@@ -41,7 +41,15 @@ def relationship_status(from_member, to_member, social_graph):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    if to_member in social_graph.get(to_member, {}).get('following',[]):
+        if from_member in social_graph.get(from_member,{}).get('following',[]):
+            return "friends"
+        else:
+            return "follower"
+    elif from_member in social_graph.get(from_member,{}).get('following',[]):
+        return "followed by"
+    else:
+        return "no relationship"
 
 
 def tic_tac_toe(board):
@@ -70,7 +78,25 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    
+    # Check rows
+    for row in board:
+        if len(set(row)) == 1 and row[0] != " ":
+            return row[0]
+
+    # Check columns
+    for col in range(len(board[0])):
+        if len(set(row[col] for row in board)) == 1 and board[0][col] != " ":
+            return board[0][col]
+
+    # Check diagonals
+    if len(set(board[i][i] for i in range(len(board)))) == 1 and board[0][0] != " ":
+        return board[0][0]
+
+    if len(set(board[i][len(board)-1-i] for i in range(len(board)))) == 1 and board[0][len(board)-1] != " ":
+        return board[0][len(board)-1]
+
+    return "NO WINNER"
 
 def eta(first_stop, second_stop, route_map):
     '''ETA.
@@ -104,3 +130,22 @@ def eta(first_stop, second_stop, route_map):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     pass
+
+    start_leg_index = ""
+    legs_key = tuple(route_map.keys())
+
+    for leg in range(len(legs_key)):
+        if legs_key[leg][0] == first_stop:
+            start_leg_index = leg
+    
+    current_leg = start_leg_index
+    eta = 0
+
+    while legs_key[current_leg - 1][1] != second_stop:
+        eta = eta + route_map[legs_key[current_leg]]["travel_time_mins"]
+        if current_leg + 1 >= len(legs_key):
+            current_leg = 0
+        elif current_leg + 1 <= len(legs_key):
+            current_leg = current_leg + 1
+
+    return eta
